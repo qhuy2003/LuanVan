@@ -1,0 +1,559 @@
+// AboutUs.module.scss - Premium Design
+
+.aboutPage {
+  background: #f8f9fa;
+
+  // ==================== HERO SECTION ====================
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+    color: white;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 30s linear infinite;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    p {
+      position: relative;
+      z-index: 1;
+      font-size: 1.5rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // ==================== CONTAINER ====================
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  // ==================== INTRO SECTION ====================
+  .intro {
+    margin: -60px auto 5rem;
+    padding: 3.5rem;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 188, 212, 0.15);
+    position: relative;
+    z-index: 10;
+    border: 3px solid rgba(0, 188, 212, 0.1);
+
+    h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 2.5rem;
+      color: #1a202c;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 5px;
+        background: linear-gradient(90deg, #00bcd4, #26c6da);
+        border-radius: 3px;
+      }
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #4a5568;
+      margin-bottom: 1.8rem;
+
+      strong {
+        color: #00bcd4;
+        font-weight: 700;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // ==================== MISSION SECTION ====================
+  .mission {
+    margin: 5rem 0;
+    padding: 4rem 3rem;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+
+    h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 3.5rem;
+      color: #1a202c;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 5px;
+        background: linear-gradient(90deg, #00bcd4, #26c6da);
+        border-radius: 3px;
+      }
+    }
+
+    .valuesGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem;
+
+      .valueCard {
+        text-align: center;
+        padding: 3rem 2rem;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f7fa 100%);
+        border-radius: 20px;
+        border: 2px solid rgba(0, 188, 212, 0.15);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 5px;
+          background: linear-gradient(90deg, #00bcd4, #26c6da);
+          transform: scaleX(0);
+          transition: transform 0.4s;
+        }
+
+        &:hover {
+          transform: translateY(-12px);
+          box-shadow: 0 20px 50px rgba(0, 188, 212, 0.2);
+          border-color: #00bcd4;
+
+          &::before {
+            transform: scaleX(1);
+          }
+
+          h3 {
+            transform: scale(1.05);
+          }
+        }
+
+        h3 {
+          font-size: 1.8rem;
+          font-weight: 700;
+          margin-bottom: 1.2rem;
+          color: #00bcd4;
+          transition: transform 0.3s;
+        }
+
+        p {
+          color: #4a5568;
+          line-height: 1.7;
+          font-size: 1.05rem;
+        }
+      }
+    }
+  }
+
+  // ==================== HISTORY SECTION ====================
+  .history {
+    margin: 5rem 0;
+    padding: 4rem 3rem;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+
+    h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 4rem;
+      color: #1a202c;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 5px;
+        background: linear-gradient(90deg, #00bcd4, #26c6da);
+        border-radius: 3px;
+      }
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 5px;
+        background: linear-gradient(180deg, #00bcd4, #26c6da);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2.5px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+      }
+
+      .timelineItem {
+        position: relative;
+        width: 50%;
+        padding: 2.5rem 3rem;
+        box-sizing: border-box;
+        margin-bottom: 3rem;
+
+        &:nth-child(odd) {
+          left: 0;
+          text-align: right;
+          padding-right: 5rem;
+        }
+
+        &:nth-child(even) {
+          left: 50%;
+          padding-left: 5rem;
+        }
+
+        .year {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 90px;
+          height: 90px;
+          background: linear-gradient(135deg, #00bcd4 0%, #26c6da 100%);
+          color: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.6rem;
+          font-weight: 900;
+          box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
+          border: 5px solid white;
+          z-index: 10;
+        }
+
+        &:nth-child(odd) .year {
+          right: -45px;
+        }
+
+        &:nth-child(even) .year {
+          left: -45px;
+        }
+
+        .content {
+          background: white;
+          padding: 2rem 2.5rem;
+          border-radius: 20px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+          border: 2px solid rgba(0, 188, 212, 0.1);
+          transition: all 0.4s;
+
+          &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 188, 212, 0.15);
+            border-color: #00bcd4;
+          }
+
+          h3 {
+            margin: 0 0 1rem;
+            color: #1a202c;
+            font-size: 1.5rem;
+            font-weight: 700;
+          }
+
+          p {
+            margin: 0;
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.05rem;
+          }
+        }
+      }
+    }
+  }
+
+  // ==================== CONCLUSION SECTION ====================
+  .conclusion {
+    margin: 5rem 0 3rem;
+    padding: 4rem 3rem;
+    background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+    border-radius: 24px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 60px rgba(0, 188, 212, 0.3);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 30s linear infinite;
+    }
+
+    h2 {
+      position: relative;
+      z-index: 1;
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      color: white;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      position: relative;
+      z-index: 1;
+      font-size: 1.3rem;
+      line-height: 1.9;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.95;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+
+      &:last-child {
+        font-weight: 700;
+        font-size: 1.4rem;
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+// ==================== RESPONSIVE ====================
+@media (max-width: 1024px) {
+  .aboutPage {
+    .hero {
+      padding: 5rem 2rem;
+
+      h1 {
+        font-size: 3.5rem;
+      }
+
+      p {
+        font-size: 1.3rem;
+      }
+    }
+
+    .intro,
+    .mission,
+    .history,
+    .conclusion {
+      padding: 3rem 2rem;
+    }
+
+    .mission .valuesGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutPage {
+    .hero {
+      padding: 4rem 1.5rem;
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    .container {
+      padding: 0 1.5rem;
+    }
+
+    .intro {
+      margin: -40px auto 3rem;
+      padding: 2.5rem 1.5rem;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .mission {
+      margin: 3rem 0;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .valuesGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+
+        .valueCard {
+          padding: 2rem 1.5rem;
+
+          h3 {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .history {
+      margin: 3rem 0;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .timeline {
+        &::before {
+          left: 40px;
+        }
+
+        .timelineItem {
+          width: 100%;
+          left: 0 !important;
+          padding-left: 100px !important;
+          padding-right: 1rem !important;
+          text-align: left !important;
+          margin-bottom: 2rem;
+
+          .year {
+            left: 0 !important;
+            right: auto !important;
+            width: 70px;
+            height: 70px;
+            font-size: 1.3rem;
+          }
+
+          .content {
+            padding: 1.5rem;
+
+            h3 {
+              font-size: 1.3rem;
+            }
+
+            p {
+              font-size: 0.95rem;
+            }
+          }
+        }
+      }
+    }
+
+    .conclusion {
+      margin: 3rem 0;
+      padding: 3rem 1.5rem;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutPage {
+    .hero {
+      padding: 3rem 1rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .intro,
+    .mission,
+    .history,
+    .conclusion {
+      padding: 2rem 1rem;
+    }
+
+    .intro h2,
+    .mission h2,
+    .history h2,
+    .conclusion h2 {
+      font-size: 1.8rem;
+    }
+  }
+}

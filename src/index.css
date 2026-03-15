@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "leaflet/dist/leaflet.css";
+@import './styles/variables.scss';
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: none;
+}
+
+
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 20px;
+}

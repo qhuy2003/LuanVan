@@ -1,0 +1,389 @@
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.backBtn {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: #00bcd4;
+  border: 2px solid #00bcd4;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+
+  &:hover {
+    background: #00bcd4;
+    color: white;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.imageSection {
+  .mainImage {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+  }
+}
+
+.infoSection {
+  .name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+    color: #333;
+  }
+
+  .priceSection {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #fff0e6;
+    border-radius: 12px;
+    display: inline-block;
+
+    .price {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #26c6da;  
+    }
+  }
+
+  .details {
+    margin: 2rem 0;
+    line-height: 2;
+    font-size: 1.1rem;
+    color: #555;
+  }
+
+  .description {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid #26c6da;
+
+    h3 { margin: 0 0 1rem 0; color:#26c6da; }
+  }
+
+  .actionSection {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      background: #f8f9fa;
+      border-radius: 50px;
+      padding: 8px;
+
+      button {
+        width: 44px;
+        height: 44px;
+        border: none;
+        background: white;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      input {
+        width: 60px;
+        text-align: center;
+        border: none;
+        background: transparent;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+    }
+
+    .addToCartBtn {
+      padding: 1rem 2rem;
+      background: linear-gradient(90deg,#26c6da,#00bcd4);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(238, 77, 45, 0.4);
+      }
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+
+    .goToCartBtn {
+      padding: 1rem 2rem;
+      background: white;
+      color: #26c6da;
+      border: 2px solid #26c6da;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: #26c6da;
+        color: white;
+      }
+    }
+  }
+}
+
+.loading, .notFound {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.5rem;
+  color: #999;
+}
+
+// Thêm vào ProductDetail.module.scss
+
+/* ==================== SIMILAR PRODUCTS SECTION ==================== */
+.similarSection {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  border-top: 2px solid #f0f0f0;
+
+  .similarTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.similarGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.similarCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #f0f0f0;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,188,212,0.15);
+    border-color: #00bcd4;
+  }
+
+  .similarImage {
+    width: 100%;
+    height: 180px; // ← Chiều cao cố định
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // ← Ảnh đầy khung, không bị méo
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+  }
+
+  .similarInfo {
+    padding: 1rem;
+
+    h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #333;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; // ← Giới hạn 2 dòng
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: 2.8rem; // ← Chiều cao cố định cho 2 dòng
+    }
+
+    .similarPrice {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #00bcd4;
+      margin: 0.5rem 0;
+    }
+
+    .similarStock {
+      color: #666;
+      font-size: 0.85rem;
+      margin: 0.3rem 0 0 0;
+    }
+  }
+}
+
+/* Empty state */
+.noSimilar {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 16px;
+  margin-top: 2rem;
+  border: 2px dashed #dee2e6;
+
+  .noSimilarIcon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+
+  h3 {
+    color: #495057;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  p {
+    color: #6c757d;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .suggestion {
+    color: #00bcd4;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  .backToHomeBtn {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #00bcd4, #26c6da);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+    }
+  }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 992px) {
+  .similarGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .similarCard {
+    .similarImage {
+      height: 160px;
+    }
+
+    .similarInfo {
+      padding: 0.8rem;
+
+      h4 {
+        font-size: 0.9rem;
+        min-height: 2.6rem;
+      }
+
+      .similarPrice {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .similarGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .similarCard {
+    .similarImage {
+      height: 140px;
+    }
+
+    .similarInfo {
+      padding: 0.7rem;
+
+      h4 {
+        font-size: 0.85rem;
+        min-height: 2.4rem;
+      }
+
+      .similarPrice {
+        font-size: 0.95rem;
+      }
+
+      .similarStock {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .similarSection {
+    .similarTitle {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .actionSection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

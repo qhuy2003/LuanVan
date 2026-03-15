@@ -1,0 +1,15 @@
+:root {
+  --primary: #00bcd4;        // Xanh cyan chính
+  --primary-dark: #0097a7;   // Khi hover, active
+  --primary-light: #e0f7fa;  // Nền nhẹ, badge, hover nhẹ
+  --primary-gradient: linear-gradient(135deg, #00bcd4, #26c6da);
+  
+  --background: #f8fdff;
+  --surface: #ffffff;
+  --text-primary: #263238;
+  --text-secondary: #546e7a;
+  --border: #e0e0e0;
+  --success: #4caf50;
+  --error: #f44336;
+  --warning: #ff9800;
+}

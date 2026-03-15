@@ -1,0 +1,685 @@
+.cartPage {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 2rem 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  h1 { font-size: 2.2rem; color: #00bcd4; }
+  p { color: #666; }
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+}
+
+/* Ensure product list stays in left column and checkout stays in right column */
+.cartItems {
+  grid-column: 1 / 2;
+}
+
+.checkout {
+  grid-column: 2 / 3;
+}
+
+.cartHeader {
+  padding: 16px 20px;
+  background: white;
+  border-bottom: 2px solid #00bcd4;
+  font-weight: bold;
+  border-radius: 16px 16px 0 0;
+}
+
+/* Grid header that aligns with .brandItem columns */
+.tableHeader {
+  display: grid;
+  grid-template-columns: 50px 80px 1fr 110px 100px 100px 60px;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 20px;
+  font-weight: 700;
+  color: #006064;
+  background: white;
+  border-bottom: 2px solid #e0f7fa;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 8px;
+  .headerQty
+  {
+    justify-self: center; 
+  }
+}
+
+.tableWrapper {
+  background: white;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,188,212,0.1);
+  width: 100%;
+}
+
+// ==================== ẢNH SẢN PHẨM – ĐẸP HƠN SHOPEE ====================
+.brandItem img {
+  width: 70px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 4px solid white;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:hover {
+    transform: scale(1.12) translateY(-6px);
+    box-shadow: 0 15px 35px rgba(238, 77, 45, 0.35);
+    border-color: #00bcd4;
+  }
+}
+
+.qtyControl {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #e0f7fa;
+      padding: 8px 16px;
+      border-radius: 50px;
+  button {
+        width: 24px;
+        height: 24px;
+        border: none;
+        background: white;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: bold;
+        color: #00bcd4;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,188,212,0.3);
+
+    &:hover {
+      background: #00bcd4;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  span {
+    min-width: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    
+  }
+}
+
+// ==================== NÚT XÓA – TRÒN ĐỎ, CÓ ICON THÙNG RÁC ====================
+.remove {
+  background: linear-gradient(135deg, #ff4757, #ff3838);
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255,71,87,0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-5px) scale(1.15);
+    box-shadow: 0 15px 35px rgba(255,71,87,0.5);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+.cartTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    font-weight: 600;
+    padding: 16px 12px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .tableRow {
+    transition: all 0.3s;
+    &:hover {
+      background: #f0fcff;
+      transform: scale(1.01);
+    }
+  }
+
+  td {
+    padding: 16px 12px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee;
+  }
+
+  .tdCheckbox {
+    width: 50px;
+  }
+
+  .tdProduct {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left !important;
+
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #b2ebf2;
+    }
+
+    .productInfo h4 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #263238;
+    }
+  }
+
+  .tdPrice, .tdSubtotal {
+    color: #00bcd4;
+    font-weight: bold;
+  }
+  .tdQuantity {
+    .qtyControl {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #e0f7fa;
+      padding: 8px 16px;
+      border-radius: 50px;
+      width: fit-content;
+      margin: 0 auto;
+
+      button {
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: white;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: bold;
+        color: #00bcd4;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,188,212,0.3);
+
+        &:hover {
+          background: #00bcd4;
+          color: white;
+          transform: scale(1.1);
+        }
+      }
+
+      span {
+        min-width: 40px;
+        font-weight: bold;
+        color: #006064;
+      }
+    }
+  }
+
+  .tdAction {
+    .removeBtn {
+      background: linear-gradient(135deg, #ef5350, #f44336);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(244,67,54,0.4);
+      }
+    }
+  }
+}
+
+
+.checkout {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+
+  h3 { margin: 0 0 1rem; color: #333; }
+
+  input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+  .suggestions {
+    margin-top: 8px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    max-height: 200px;
+    overflow-y: auto;
+
+    li {
+      padding: 12px 16px;
+      cursor: pointer;
+      &:hover { background: #f0f0f0; }
+    }
+  }
+
+
+
+  
+  .map { margin: 1.5rem 0; border-radius: 16px; overflow: hidden; }
+
+  .fee {
+    text-align: right;
+    font-size: 1.3rem;
+    color: #00bcd4;
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+
+  .summary {
+    border-top: 2px dashed #ddd;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+
+    p { display: flex; justify-content: space-between; margin: 0.8rem 0; }
+    .grandTotal { font-size: 1.6rem; font-weight: bold; color: #00bcd4; }
+  }
+
+  .checkoutBtn {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #00bcd4, #26c6da);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: 0.3s;
+
+    &:hover { background: linear-gradient(90deg, #d63c1f, #e55a2b); }
+    &:disabled { background: #ccc; cursor: not-allowed; }
+  }
+}
+
+.emptyCart {
+  text-align: center;
+  padding: 100px 20px;
+  color: #999;
+  h2 { font-size: 2rem; margin-bottom: 1rem; }
+  .backBtn {
+    padding: 12px 30px;
+    background: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+}
+.backBtn {
+    margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: #00bcd4;
+  border: 2px solid #00bcd4;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+
+  &:hover {
+    background: #00bcd4;
+    color: white;
+  }
+}
+
+.warningMessage {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 6px;
+  color: #856404;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+  // ==================== PHẦN KHUYẾN MÃI MỚI ====================
+  .voucherBox {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 2px dashed #00bcd4;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      font-size: 2rem;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      opacity: 0.3;
+    }
+  }
+
+  .voucherHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .voucherTitle {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #00bcd4;
+    }
+
+    .toggleVoucherList {
+      background: none;
+      border: 1px solid #00bcd4;
+      color: #00bcd4;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background: var(--primary-light, #00bcd4);;
+        color: white;
+      }
+    }
+  }
+
+  .voucherList {
+    background: white;
+    border-radius: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(238, 77, 45, 0.1);
+
+    .voucherItem {
+      padding: 14px 16px;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &:last-child { border-bottom: none; }
+
+      &:hover {
+        background: #fff5f0;
+        transform: translateX(4px);
+      }
+
+      &.voucherApplied {
+        background: #fff0e6;
+        border-left: 4px solid #00bcd4;
+      }
+    }
+
+    .voucherLeft {
+      .voucherCode {
+        font-weight: bold;
+        color: #00bcd4;
+        font-size: 1.1rem;
+      }
+      .voucherDesc {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 4px;
+      }
+    }
+
+    .voucherRight {
+      .useBtn {
+        background: #00bcd4;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover { 
+          background:  var(--primary); 
+          color: black;
+        }
+      }
+
+      .usedText {
+        color: #00bcd4;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .voucherInputWrapper {
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+
+    input {
+      flex: 1;
+      padding: 14px 16px;
+      border: 2px solid #00bcd4;
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+
+      &:focus {
+        box-shadow: 0 0 0 4px rgba(238, 77, 45, 0.2);
+      }
+
+      &:disabled { background: #f5f5f5; }
+    }
+
+    .applyBtn {
+      background: #00bcd4;
+      color: white;
+      border: none;
+      padding: 0 24px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      white-space: nowrap;
+
+      &:hover { background: #d63c1f; }
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .appliedVoucher {
+    margin-top: 1rem;
+    padding: 14px 16px;
+    background: #fff0e6;
+    border: 2px solid #00bcd4;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #00bcd4;
+
+    .removeVoucher {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #00bcd4;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover { background: rgba(238, 77, 45, 0.2); }
+    }
+  }
+
+  // ==================== HIỆU ỨNG ĐẸP KHI LOADING ====================
+  .loading {
+    text-align: center;
+    padding: 20px;
+    color: #00bcd4;
+    font-size: 1.1rem;
+  }
+
+.brandGroup {
+  background: white;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0,188,212,0.1);
+  overflow: hidden;
+}
+
+.brandHeader {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+  border-bottom: 2px solid #00bcd4;
+  font-weight: bold;
+  color: #006064;
+
+  .brandSelect {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #00bcd4;
+    }
+
+    .itemCount {
+      margin-left: 8px;
+      font-weight: normal;
+      color: #006064;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.brandItems {
+  padding: 0 20px 20px;
+}
+
+.brandItem {
+  display: grid;
+  grid-template-columns: 50px 80px 1fr 110px 100px 100px 60px;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px dashed #e0f7fa;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: #f8fdff;
+  }
+}
+
+@media (max-width: 992px) {
+  .brandItem {
+    grid-template-columns: 40px 70px 1fr 100px 100px 80px 50px;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .brandItem {
+    grid-template-columns: 1fr;
+    text-align: center;
+    
+    .itemCheckbox { justify-self: center; }
+    img { justify-self: center; }
+  }
+}
+
+
+// Responsive cho mobile
+@media (max-width: 768px) {
+  .checkout {
+    .voucherInputWrapper {
+      flex-direction: column;
+
+      input { border-radius: 12px; }
+      .applyBtn { border-radius: 12px; padding: 14px; }
+    }
+
+    .voucherList .voucherItem {
+      flex-direction: column;
+      text-align: center;
+      gap: 8px;
+
+      .voucherRight { margin-top: 8px; }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .main { grid-template-columns: 1fr; }
+  .checkout { position: static; }
+}
+@media (max-width: 768px) {
+  .cartTable {
+    font-size: 0.9rem;
+
+    th, td { padding: 12px 8px; }
+
+    .tdProduct {
+      flex-direction: column;
+      text-align: center;
+      gap: 8px;
+
+      img { width: 60px; height: 60px; }
+    }
+
+    .qtyControl { padding: 6px 12px; }
+  }
+}

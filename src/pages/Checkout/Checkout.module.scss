@@ -1,0 +1,476 @@
+$primary: #00bcd4;
+$primary-dark: #0097a7;
+$bg: #f8fafb;
+$border: #e6ecef;
+$text: #37474f;
+$text-light: #78909c;
+
+.checkoutWrapper {
+  padding: 20px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+}
+
+.mainContent {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar {
+  flex: 1;
+  min-width: 350px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 2px solid $primary;
+  padding-bottom: 8px;
+}
+
+/* Address Section */
+.searchBox {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.addressInput {
+  width: 95%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary;
+  }
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  
+  li {
+    padding: 10px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    
+    &:hover {
+      background: #f8f9fa;
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.mapContainer {
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.shippingInfo {
+  display: flex;
+  gap: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.infoItem {
+  font-size: 14px;
+  color: #555;
+  
+  strong {
+    color: #007bff;
+  }
+}
+
+/* Payment Methods */
+.paymentMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.paymentMethod {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    border-color: #007bff;
+    background: #f8f9fa;
+  }
+  
+  &.selected {
+    border-color: #007bff;
+    background: #e7f3ff;
+  }
+}
+
+.methodRadio {
+  margin-right: 16px;
+}
+
+.radioCircle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #adb5bd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .paymentMethod.selected & {
+    border-color: #007bff;
+  }
+}
+
+.radioInner {
+  width: 10px;
+  height: 10px;
+  background: #007bff;
+  border-radius: 50%;
+}
+
+.methodInfo {
+  flex: 1;
+}
+
+.methodName {
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.methodDesc {
+  font-size: 13px;
+  color: #666;
+}
+
+.methodIcon {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.paymentNote {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+  border-left: 4px solid #28a745;
+  
+  p {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  ul {
+    margin: 0;
+    padding-left: 20px;
+    
+    li {
+      margin-bottom: 4px;
+      font-size: 13px;
+      color: #555;
+    }
+  }
+}
+
+/* Product List */
+.productList {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.productItem {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.productImage {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+
+.pInfo {
+  flex: 1;
+}
+
+.productName {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.productQty {
+  font-size: 13px;
+  color: #666;
+}
+
+.pPrice {
+  font-weight: 600;
+  color: $primary;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Summary */
+.summary {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-family: inherit;
+}
+
+.summaryHeader {
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+  
+  span:first-child {
+    color: #555;
+  }
+  
+  span:last-child {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  &.discount {
+    span:last-child {
+      color: #28a745;
+    }
+  }
+  
+  &.total {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 2px solid #ddd;
+    font-size: 16px;
+    font-weight: 600;
+    
+    .finalPrice {
+      color: $primary;
+      font-size: 18px;
+    }
+  }
+}
+
+.originalPrice {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 13px;
+}
+
+.paymentBadge {
+  background: #e7f3ff;
+  color: #007bff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Confirm Button */
+.confirmBtn {
+  width: 100%;
+  padding: 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover:not(:disabled) {
+    background: $primary;
+    transform: translateY(-1px);
+  }
+  
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.qrTitle {
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #00bcd4;
+  font-size: 1.4rem;
+}
+
+.vietqrSection {
+  background: #f8fdfc;
+  border: 2px dashed #00bcd4;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.qrWrapper {
+  background: white;
+  padding: 1rem;
+  border-radius: 16px;
+  display: inline-block;
+  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.15);
+  margin: 1rem 0;
+}
+
+.qrImage {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.bankDetails {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.amount {
+  font-weight: bold;
+  color: #00bcd4;
+  font-size: 1.2rem;
+}
+
+.note {
+  font-weight: bold;
+  color: #00bcd4;
+  word-break: break-all;
+}
+
+.qrGuide {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #e0f7fa;
+  border-radius: 12px;
+  color: #006064;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.qrLoading {
+  text-align: center;
+  padding: 3rem;
+  color: #00bcd4;
+}
+
+.qrPlaceholder {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+  font-style: italic;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #00bcd4;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+// {(() => {
+//   const voucherInfo = getVoucherInfo();
+//   if (voucherInfo.total_discount > 0) {
+//     return (
+//       <div className={styles.voucherInfo}>
+//         <h5>Voucher đã áp dụng:</h5>
+        
+//         {/* Voucher brand */}
+//         {voucherInfo.applied_brand_vouchers && 
+//           Object.entries(voucherInfo.applied_brand_vouchers).map(([brandId, voucher]) => (
+//             <div key={brandId} className={styles.voucherItem}>
+//               <span>🏪 {voucher.code} - Giảm {getBrandDiscountFromVoucher(voucher, voucherInfo.subtotal).toLocaleString()}đ</span>
+//             </div>
+//           ))
+//         }
+        
+//         {/* Voucher public */}
+//         {voucherInfo.applied_public_voucher && (
+//           <div className={styles.voucherItem}>
+//             <span>🎁 {voucherInfo.applied_public_voucher.code} - Giảm {getPublicDiscountFromVoucher(voucherInfo.applied_public_voucher, voucherInfo.subtotal).toLocaleString()}đ</span>
+//           </div>
+//         )}
+//       </div>
+//     );
+//   }
+//   return null;
+// })()}

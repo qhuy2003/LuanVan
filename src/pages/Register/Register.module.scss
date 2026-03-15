@@ -1,0 +1,253 @@
+.registerPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg,#14e0f3, white, );
+  padding: 20px;
+}
+
+.registerBox {
+  background: white;
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
+
+  h2 {
+    font-size: 1.9rem;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+}
+
+/* THANH BƯỚC SIÊU ĐẸP */
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0 50px;
+  position: relative;
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.stepNumber {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 22px;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.step.active .stepNumber {
+  background: #3b82f6;
+  color: white;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.step.completed .stepNumber {
+  background: #10b981;
+  color: white;
+}
+
+.stepLabel {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.step.active .stepLabel {
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+/* Đường nối */
+.stepConnector {
+  position: absolute;
+  top: 28px;
+  left: 56px;
+  right: 56px;
+  height: 5px;
+  background: #e2e8f0;
+  z-index: 1;
+  border-radius: 3px;
+}
+
+.stepConnector.active {
+  background: #3b82f6;
+}
+
+/* INPUT & SELECT – ĐỀU NHAU, ĐẸP TUYỆT ĐỐI */
+.inputGroup,
+.passwordGroup {
+  position: relative;
+  margin-bottom: 1.3rem;
+}
+
+/* ICON TRÁI (khóa, email, user, v.v.) */
+.inputGroup i,
+.passwordGroup i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 19px;
+  z-index: 10;
+}
+
+/* INPUT & SELECT – ĐỀU NHAU, KHÔNG BỊ ĐÈ */
+.inputGroup input,
+.passwordGroup input,
+.inputGroup select {
+  width: 100%;
+  padding: 16px 52px 16px 52px;   /* left: icon trái | right: icon mắt */
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.15);
+  }
+}
+
+/* ICON MẮT – TÁCH RIÊNG, KHÔNG ĐÈ NỮA */
+.passwordGroup .eyeIcon {
+  position: absolute;
+  left: auto;
+  right: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 10;
+  
+  &:hover {
+    color: #3b82f6;
+  }
+}
+/* Nếu form nhỏ (mobile), đẩy icon sát mép */
+@media (max-width: 480px) {
+  .passwordGroup .eyeIcon {
+    right: 10px;
+    font-size: 16px;
+  }
+}
+
+select {
+    width: 95%;
+    padding: 14px 14px 14px 46px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+    appearance: none; /* Loại bỏ mũi tên mặc định */
+    -webkit-appearance: none; /* Cho trình duyệt WebKit */
+    -moz-appearance: none; /* Cho trình duyệt Firefox */
+
+    &:focus {
+      border-color: #3b82f6;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    }
+  }
+
+/* NÚT ĐẸP NHẤT */
+.btnGroup {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  justify-content: center;
+}
+
+.backBtn {
+  background: transparent !important;
+  color: #64748b !important;
+  border: 2px solid #e2e8f0 !important;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  i {
+    font-size: 18px;
+  }
+
+  &:hover {
+    background: #f1f5f9 !important;
+    border-color: #3b82f6 !important;
+    color: #3b82f6 !important;
+    transform: translateY(-2px);
+  }
+}
+
+button[type="submit"] {
+  flex: 1;
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* ĐĂNG NHẬP LINK */
+.loginLink {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: #64748b;
+
+  a {
+    color: #3b82f6;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

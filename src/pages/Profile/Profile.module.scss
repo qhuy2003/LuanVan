@@ -1,0 +1,462 @@
+.profilePage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fdff 0%, #e0f7fa 100%);
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #00bcd4;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 3rem;
+ box-shadow: 0 15px 40px rgba(0, 188, 212, 0.15);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px dashed #e0f7fa;
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #00bcd4;
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.3);
+  }
+
+  .info {
+    h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.8rem;
+      color: #263238;
+    }
+    p {
+      margin: 0.5rem 0;
+      color: #546e7a;
+      font-size: 1.1rem;
+    }
+    .role {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #e0f7fa;
+      color: #00bcd4;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.section {
+  margin: 2.5rem 0;
+
+  h3 {
+    font-size: 1.4rem;
+    color: #00bcd4;
+    margin: 0 0 1rem;
+    font-weight: 600;
+  }
+.infoDisplay {
+  background: #f8fdff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e0f7fa;
+
+  p {
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+
+    strong {
+      color: #00bcd4;
+      margin-right: 0.5rem;
+    }
+  }
+}
+  .display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8fdff;
+    border-radius: 12px;
+    font-size: 1.1rem;
+
+    .editBtn {
+      padding: 0.6rem 1.2rem;
+      background: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: #0097a7;
+      }
+    }
+  }
+    .input {
+      padding: 1rem;
+      border: 2px solid #e0f7fa;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+  .editForm, .passwordForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .input {
+      padding: 1rem;
+      border: 2px solid #e0f7fa;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: #00bcd4;
+        box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.2);
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      .saveBtn {
+        flex: 1;
+        padding: 1rem;
+        background: linear-gradient(135deg, #00bcd4, #26c6da);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(0, 188, 212, 0.4);
+        }
+      }
+
+      .cancelBtn {
+        padding: 1rem;
+        background: #eceff1;
+        color: #546e7a;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .changePassBtn {
+    padding: 1rem 3rem;
+    background: white;
+    color: #00bcd4;
+    border: 2px solid #00bcd4;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+
+    &:hover {
+      background: #00bcd4;
+      color: white;
+    }
+  }
+}
+
+.divider {
+  border: none;
+  border-top: 2px dashed #e0f7fa;
+  margin: 2rem 0;
+}
+
+.backBtn {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: #00bcd4;
+  border: 2px solid #00bcd4;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+
+  &:hover {
+    background: #00bcd4;
+    color: white;
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.5rem;
+  color: #00bcd4;
+}
+.passwordWrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.passwordWrapper input {
+  width: 95%;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #00bcd4;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #0097a7;
+  }
+}
+
+.editForm {
+  margin-top: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #f8fdff;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+
+  label {
+    min-width: 120px;
+    font-weight: 600;
+    color: #00bcd4;
+    font-size: 1.1rem;
+  }
+
+  input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    color: #263238;
+    outline: none;
+
+    &::placeholder {
+      color: #b0bec5;
+    }
+  }
+}
+
+/* Nút Lưu + Hủy – giống hệt phần đổi mật khẩu */
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-end;
+}
+
+.saveBtn {
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #00bcd4, #26c6da);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 188, 212, 0.4);
+  }
+}
+
+.cancelBtn {
+  padding: 1rem 2rem;
+  background: white;
+  color: #546e7a;
+  border: 2px solid #e0e7ff;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background: #f5f5f5;
+    border-color: #00bcd4;
+    color: #00bcd4;
+  }
+}
+.avatarWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.avatarUpload {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 0 0 60px 60px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.avatarUpload:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.avatarInput {
+  display: none;
+}
+
+.uploadIcon {
+  font-size: 18px;
+  display: block;
+}
+
+.uploadText {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+// Warehouse Address Selector Styles
+.warehouseForm {
+  margin-top: 1.5rem;
+}
+
+.suggestionsList {
+  position: relative;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 2px solid #00bcd4;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  background: white;
+  z-index: 100;
+
+  .suggestionItem {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #e0f7fa;
+    transition: background 0.3s;
+    align-items: flex-start;
+
+    &:hover {
+      background: #e0f7fa;
+    }
+
+    i {
+      color: #00bcd4;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .suggestionTitle {
+      margin: 0;
+      font-weight: 600;
+      color: #263238;
+      font-size: 0.95rem;
+    }
+
+    .suggestionDesc {
+      margin: 0.25rem 0 0;
+      color: #666;
+      display: block;
+    }
+  }
+}
+
+.mapContainer {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2);
+}
+
+.coordinatesBox {
+  background: #f0f9ff;
+  border-left: 4px solid #00bcd4;
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+
+  p {
+    margin: 0.5rem 0;
+    color: #263238;
+
+    code {
+      background: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #d32f2f;
+      font-weight: bold;
+    }
+  }
+}
+
+.warehouseInfo {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+
+  p {
+    margin: 0.5rem 0;
+    color: #263238;
+  }
+
+  .noData {
+    color: #999;
+    font-style: italic;
+  }
+}

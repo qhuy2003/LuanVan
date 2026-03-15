@@ -1,0 +1,80 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+}
+
+.card {
+  background: white;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+.successIcon, .failIcon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.successIcon { color: #28a745; }
+.failIcon { color: #dc3545; }
+
+h1 { font-size: 2.5rem; margin: 20px 0; }
+
+.redirect {
+  margin-top: 20px;
+  font-style: italic;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+}
+
+.card {
+  background: white;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+.successIcon, .failIcon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.successIcon { color: #28a745; }
+.failIcon { color: #dc3545; }
+
+h1 { font-size: 2.5rem; margin: 20px 0; }
+
+.redirect {
+  margin-top: 20px;
+  font-style: italic;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+}
