@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import styles from './BrandDashboard.module.scss';
+import styles from './BrandDashBoard.module.scss';
 import UserMenu from '../../components/UserMenu/UserMenu';
 
 // Chart.js & react-chartjs-2
