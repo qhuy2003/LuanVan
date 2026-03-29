@@ -1,0 +1,28 @@
+FROM php:8.2-cli
+
+# Cài extension cần thiết cho Laravel
+RUN docker-php-ext-install bcmath pdo pdo_mysql
+
+# Cài Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Set thư mục làm việc
+WORKDIR /app
+
+# Copy toàn bộ code vào container
+COPY . .
+
+# Cài thư viện PHP
+RUN composer install --no-interaction --optimize-autoloader
+
+# Tạo APP_KEY (nếu chưa có)
+RUN php artisan key:generate || true
+
+# Cache config (tăng performance)
+RUN php artisan config:cache || true
+
+# Mở port
+EXPOSE 8000
+
+# Chạy server
+CMD php artisan serve --host=0.0.0.0 --port=$PORT
