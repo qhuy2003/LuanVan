@@ -26,7 +26,7 @@ import RetailerOrders from "./pages/Retailer/RetailerOrders";
 import AdminStatistics from "./pages/Admin/AdminStatistics";
 import BrandStatistics from "./pages/Brand/BrandStatistics";
 import VnpayReturn from "./pages/VNPAY/VNPayReturn";
-import ZaloPayReturn from "./pages/ZALOPAY/ZALOPayReturn";
+import ZaloPayReturn from "./pages/ZALOPAY/ZaloPayReturn";
 import AboutUs from "./pages/About us/AboutUs";
 function App() {
   const user = JSON.parse(localStorage.getItem("user")); 
