@@ -1,19 +1,28 @@
 FROM php:8.2-cli
 
-# Cài extension cần thiết (FIX LỖI Ở ĐÂY)
-RUN docker-php-ext-install bcmath pdo pdo_mysql
+# Cài lib hệ thống
+RUN apt-get update && apt-get install -y \
+    git unzip curl libzip-dev zip \
+    && docker-php-ext-install bcmath pdo pdo_mysql zip
 
-# Cài composer
+# Cài Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 COPY . .
 
-# Debug xem có bcmath chưa
-RUN php -m | grep bcmath
+# ❌ QUAN TRỌNG: bỏ scripts để tránh lỗi
+RUN composer install \
+    --no-interaction \
+    --no-scripts \
+    --prefer-dist \
+    --optimize-autoloader
 
-# Cài dependencies
-RUN composer install --no-interaction --optimize-autoloader
+# Copy env nếu chưa có (tránh crash)
+RUN cp .env.example .env || true
 
-# Chạy Laravel
+# Generate key (tránh lỗi runtime)
+RUN php artisan key:generate || true
+
+# Run app
 CMD php artisan serve --host=0.0.0.0 --port=$PORT
