@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import styles from './BrandDashboard.module.scss'; 
+import styles from './BrandDashBoard.module.scss'; 
 import React, { Profiler, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify'; 
 import "react-toastify/dist/ReactToastify.css";
