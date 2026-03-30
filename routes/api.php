@@ -112,9 +112,11 @@ Route::middleware('jwt.auth')->group(function () {
     });
 
     // Common routes for all authenticated users
-    Route::get('me', [AuthController::class, 'profile']);
-    Route::get('profile', [AuthController::class, 'profile']);
-    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('/me', [AuthController::class, 'profile']);
+    Route::post('/me', [AuthController::class, 'updateProfile']);
+    Route::put('/me/password', [AuthController::class, 'changePassword']);
+    Route::get('/profile', [AuthController::class, 'profile']);
+    Route::post('/logout', [AuthController::class, 'logout']);
     
     // Brand routes
     Route::prefix('brand')->group(function () {
