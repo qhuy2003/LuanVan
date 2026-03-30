@@ -21,6 +21,9 @@ RUN composer install \
 
 EXPOSE 8000
 
+# Railway sẽ set PORT env var, artisan serve sẽ listen trên PORT
+ENV PORT=8000
+
 COPY docker-entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
