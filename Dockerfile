@@ -18,9 +18,10 @@ RUN composer install \
     --prefer-dist \
     --optimize-autoloader
 
-RUN cp .env.example .env || true
-RUN php artisan key:generate || true
-
 EXPOSE 8000
 
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT
+# Tạo entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+CMD ["/usr/local/bin/entrypoint.sh"]
