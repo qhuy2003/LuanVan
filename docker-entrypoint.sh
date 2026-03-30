@@ -57,6 +57,11 @@ until php -r "
 done
 
 echo "DB connected!"
+
+# Run migrations
+echo "Running migrations..."
+php artisan migrate --force || true
+
 echo "Starting server on port ${PORT:-8000}..."
 php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
 ```
