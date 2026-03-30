@@ -1,9 +1,13 @@
 FROM php:8.2-cli
 
-# Cài lib hệ thống
+# Cài lib + extension cần thiết
 RUN apt-get update && apt-get install -y \
     git unzip curl libzip-dev zip \
-    && docker-php-ext-install bcmath pdo pdo_mysql zip
+    && docker-php-ext-install \
+        bcmath \
+        pdo \
+        pdo_mysql \
+        zip
 
 # Cài Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -11,18 +15,23 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
-# ❌ QUAN TRỌNG: bỏ scripts để tránh lỗi
+# Install dependency (❌ bỏ --no-scripts)
 RUN composer install \
     --no-interaction \
-    --no-scripts \
     --prefer-dist \
     --optimize-autoloader
 
-# Copy env nếu chưa có (tránh crash)
+# Copy env nếu chưa có
 RUN cp .env.example .env || true
 
-# Generate key (tránh lỗi runtime)
+# Generate key
 RUN php artisan key:generate || true
 
-# Run app
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+# Cache config
+RUN php artisan config:cache || true
+
+# Expose port
+EXPOSE 8000
+
+# Start app
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT
