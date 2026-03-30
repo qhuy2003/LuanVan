@@ -58,4 +58,59 @@ class AuthController extends Controller
     {
         return response()->json(auth()->user());
     }
+
+    // 🟢 Alias for me() - get profile
+    public function profile()
+    {
+        return response()->json(auth()->user());
+    }
+
+    // 🟢 Update profile
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+        
+        $request->validate([
+            'full_name' => 'nullable|string|max:255',
+            'email' => 'nullable|string|email|unique:users,email,' . $user->user_id . ',user_id',
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:500',
+        ]);
+
+        $user->update($request->only(['full_name', 'email', 'phone', 'address']));
+
+        return response()->json([
+            'message' => 'Cập nhật hồ sơ thành công!',
+            'user' => $user
+        ]);
+    }
+
+    // 🟢 Change password
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required|string',
+            'new_password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = auth()->user();
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return response()->json(['message' => 'Mật khẩu cũ không chính xác'], 400);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return response()->json([
+            'message' => 'Đổi mật khẩu thành công!'
+        ]);
+    }
+
+    // 🟢 Logout
+    public function logout()
+    {
+        auth()->logout();
+        return response()->json(['message' => 'Đăng xuất thành công!']);
+    }
 }
