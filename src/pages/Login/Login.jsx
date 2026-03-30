@@ -28,7 +28,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/login", formData);
+      const res = await axios.post("https://luanvan-production-4c74.up.railway.app/api/login", formData);
 
       // Lưu token và user info
       localStorage.setItem("token", res.data.token);

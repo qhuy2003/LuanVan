@@ -74,7 +74,7 @@ function VNPayReturn() {
           }))
         };
 
-        const response = await axios.post('http://127.0.0.1:8000/api/orders', payload, {
+        const response = await axios.post('https://luanvan-production-4c74.up.railway.app/api/orders', payload, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'

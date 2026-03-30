@@ -62,7 +62,7 @@ function AdminStatistics() {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const res = await axios.get(`http://127.0.0.1:8000/api/admin/stats?year=${year}`, {
+      const res = await axios.get(`https://luanvan-production-4c74.up.railway.app/api/admin/stats?year=${year}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setter(res.data);

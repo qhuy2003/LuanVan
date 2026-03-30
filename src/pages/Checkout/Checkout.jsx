@@ -85,7 +85,7 @@ const handleVnpayPayment = async () => {
 
   try {
     setLoadingVnpay(true);
-    const res = await axios.post('http://127.0.0.1:8000/api/payment/vnpay/create', {
+    const res = await axios.post('https://luanvan-production-4c74.up.railway.app/api/payment/vnpay/create', {
       order_id: 'VNP_' + Date.now(),
       amount: total,
       order_info: `Thanh toan don hang logistics - CyanStore`
@@ -113,7 +113,7 @@ const handleZaloPayPayment = async () => {
 
   try {
     setLoadingZaloPay(true);
-    const res = await axios.post('http://127.0.0.1:8000/api/payment/zalopay/create', {
+    const res = await axios.post('https://luanvan-production-4c74.up.railway.app/api/payment/zalopay/create', {
       order_id: 'ZLP_' + Date.now(),
       amount: total,
       order_info: `Thanh toan don hang logistics - QH`

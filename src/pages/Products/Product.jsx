@@ -61,7 +61,7 @@ function Product() {
     const checkWarehouseAddress = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://127.0.0.1:8000/api/brand/check-warehouse', {
+        const res = await axios.get('https://luanvan-production-4c74.up.railway.app/api/brand/check-warehouse', {
           headers: { Authorization: `Bearer ${token}` }
         });
 

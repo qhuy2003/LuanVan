@@ -60,7 +60,7 @@ function BrandStatistics() {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const res = await axios.get(`http://127.0.0.1:8000/api/brand/stats?year=${year}`, {
+      const res = await axios.get(`https://luanvan-production-4c74.up.railway.app/api/brand/stats?year=${year}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setter(res.data);
