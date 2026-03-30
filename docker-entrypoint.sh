@@ -5,9 +5,16 @@ if [ ! -f .env ]; then
     cp .env.example .env
 fi
 
-grep -q "^APP_KEY=" .env || echo "APP_KEY=" >> .env
+# Ghi tất cả env vars quan trọng vào .env
+echo "APP_KEY=${APP_KEY}" >> .env
+echo "DB_HOST=${DB_HOST}" >> .env
+echo "DB_PORT=${DB_PORT}" >> .env
+echo "DB_DATABASE=${DB_DATABASE}" >> .env
+echo "DB_USERNAME=${DB_USERNAME}" >> .env
+echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
+echo "CACHE_DRIVER=${CACHE_DRIVER:-file}" >> .env
+echo "SESSION_DRIVER=${SESSION_DRIVER:-file}" >> .env
 
-php artisan key:generate --force
 php artisan config:clear
 
 echo "=== DB CONFIG ==="
@@ -35,6 +42,14 @@ until php -r "
 done
 
 echo "DB connected!"
-
 echo "Starting server on port ${PORT:-8000}..."
 php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+```
+
+---
+
+### Đảm bảo Railway Variables có đủ
+```
+APP_KEY=base64:Z3TTj4ezRrAmqzvt9M8uVodoEkCKAbRriIvnoQfKe4I=
+CACHE_DRIVER=file
+SESSION_DRIVER=file
