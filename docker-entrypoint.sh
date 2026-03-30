@@ -57,4 +57,4 @@ ls /app/server.php || echo "server.php NOT FOUND"
 ls /app/public/index.php || echo "index.php NOT FOUND"
 
 cd /app/public
-php -S 0.0.0.0:${PORT} ../server.php
+php -S 0.0.0.0:${PORT} -t /app/public /app/public/index.php
