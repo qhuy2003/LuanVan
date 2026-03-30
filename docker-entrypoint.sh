@@ -34,17 +34,7 @@ until php -r "
     sleep 3
 done
 
-echo "DB connected! Running migrations..."
-php artisan migrate --force
+echo "DB connected!"
 
 echo "Starting server on port ${PORT:-8000}..."
 php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
-```
-
----
-
-### Railway Variables — thêm 3 biến này
-```
-CACHE_DRIVER=file
-SESSION_DRIVER=file
-QUEUE_CONNECTION=sync
