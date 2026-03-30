@@ -59,7 +59,8 @@ echo "Checking files..."
 ls /app/server.php || echo "server.php NOT FOUND"
 ls /app/public/index.php || echo "index.php NOT FOUND"
 
-cd /app/public
+cd /app
 php artisan route:clear
 php artisan route:cache
+
 php -S 0.0.0.0:${PORT} -t /app/public /app/public/index.php
