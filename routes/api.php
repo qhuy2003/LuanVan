@@ -76,6 +76,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/vouchers/apply', [PromotionController::class, 'apply']);
     
     // 👤 Profile
+    Route::get('/me', [AuthController::class, 'profile']);
     Route::post('/me', [AuthController::class, 'updateProfile']);
     Route::put('/me/password', [AuthController::class, 'changePassword']);
 });
