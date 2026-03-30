@@ -1,19 +1,33 @@
 #!/bin/bash
 set -e
 
+# Tạo .env từ example
 if [ ! -f .env ]; then
     cp .env.example .env
 fi
 
-# Ghi tất cả env vars quan trọng vào .env
-echo "APP_KEY=${APP_KEY}" >> .env
-echo "DB_HOST=${DB_HOST}" >> .env
-echo "DB_PORT=${DB_PORT}" >> .env
-echo "DB_DATABASE=${DB_DATABASE}" >> .env
-echo "DB_USERNAME=${DB_USERNAME}" >> .env
-echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
-echo "CACHE_DRIVER=${CACHE_DRIVER:-file}" >> .env
-echo "SESSION_DRIVER=${SESSION_DRIVER:-file}" >> .env
+# Ghi đè toàn bộ config cần thiết
+cat > .env << EOF
+APP_NAME=Laravel
+APP_ENV=production
+APP_KEY=${APP_KEY}
+APP_DEBUG=false
+APP_URL=${APP_URL}
+
+DB_CONNECTION=mysql
+DB_HOST=${DB_HOST}
+DB_PORT=${DB_PORT}
+DB_DATABASE=${DB_DATABASE}
+DB_USERNAME=${DB_USERNAME}
+DB_PASSWORD=${DB_PASSWORD}
+
+SESSION_DRIVER=file
+CACHE_STORE=file
+QUEUE_CONNECTION=sync
+
+LOG_CHANNEL=stderr
+LOG_LEVEL=debug
+EOF
 
 php artisan config:clear
 
@@ -48,8 +62,12 @@ php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
 
 ---
 
-### Đảm bảo Railway Variables có đủ
+### Railway Variables cần có
 ```
 APP_KEY=base64:Z3TTj4ezRrAmqzvt9M8uVodoEkCKAbRriIvnoQfKe4I=
-CACHE_DRIVER=file
-SESSION_DRIVER=file
+APP_URL=https://luanvan-production-4c74.up.railway.app
+DB_HOST=mysql.railway.internal
+DB_PORT=3306
+DB_DATABASE=railway
+DB_USERNAME=root
+DB_PASSWORD=azmECjBBVgkeXPCDEsavsxKUTvIBfXuq
