@@ -49,6 +49,6 @@ until php -r "
     echo "DB not ready, retrying in 3s..."
     sleep 3
 done
-
 echo "DB connected!"
-php artisan serve --host=0.0.0.0 --port=${PORT}
+cd /app/public
+php -S 0.0.0.0:${PORT} ../server.php
