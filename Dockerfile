@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
         bcmath \
         pdo \
         pdo_mysql \
+        mysqli \
         zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -20,7 +21,6 @@ RUN composer install \
 
 EXPOSE 8000
 
-# Tạo entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
