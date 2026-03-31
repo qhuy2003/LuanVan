@@ -14,7 +14,17 @@ class CartController extends Controller
 {
 public function index()
 {
-    $retailer = Auth::user()->retailer;
+    $user = Auth::user();
+    
+    if (!$user) {
+        return response()->json(['message' => 'Unauthorized'], 401);
+    }
+
+    $retailer = $user->retailer;
+    
+    if (!$retailer) {
+        return response()->json(['message' => 'User is not a retailer'], 403);
+    }
 
      $cart = Cart::with([
         'items.product' => function ($query) {
@@ -71,15 +81,26 @@ public function index()
     ]);
 }
 
-        public function add(Request $request)
+        public function store(Request $request)
     {
         $request->validate([
             'product_id' => 'required|exists:products,product_id',
             'quantity'   => 'integer|min:1'
         ]);
 
-        $retailerId = Auth::user()->retailer->retailer_id;
-        $cart = Cart::firstOrCreate(['retailer_id' => $retailerId]);
+        $user = Auth::user();
+        
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $retailer = $user->retailer;
+        
+        if (!$retailer) {
+            return response()->json(['message' => 'User is not a retailer'], 403);
+        }
+
+        $cart = Cart::firstOrCreate(['retailer_id' => $retailer->retailer_id]);
 
         $productId = $request->product_id;
         $addQty = $request->quantity ?? 1;
@@ -112,7 +133,19 @@ public function index()
     {
         $request->validate(['quantity' => 'required|integer|min:1']);
 
-        $cart = Cart::where('retailer_id', Auth::user()->retailer->retailer_id)->firstOrFail();
+        $user = Auth::user();
+        
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $retailer = $user->retailer;
+        
+        if (!$retailer) {
+            return response()->json(['message' => 'User is not a retailer'], 403);
+        }
+
+        $cart = Cart::where('retailer_id', $retailer->retailer_id)->firstOrFail();
 
         $item = CartItem::where('cart_id', $cart->cart_id)
                         ->where('product_id', $productId)
@@ -126,7 +159,19 @@ public function index()
 
     public function remove($productId)
     {
-        $cart = Cart::where('retailer_id', Auth::user()->retailer->retailer_id)->firstOrFail();
+        $user = Auth::user();
+        
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $retailer = $user->retailer;
+        
+        if (!$retailer) {
+            return response()->json(['message' => 'User is not a retailer'], 403);
+        }
+
+        $cart = Cart::where('retailer_id', $retailer->retailer_id)->firstOrFail();
 
         CartItem::where('cart_id', $cart->cart_id)
                 ->where('product_id', $productId)
@@ -137,7 +182,19 @@ public function index()
 
     public function clear()
     {
-        $cart = Cart::where('retailer_id', Auth::user()->retailer->retailer_id)->firstOrFail();
+        $user = Auth::user();
+        
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $retailer = $user->retailer;
+        
+        if (!$retailer) {
+            return response()->json(['message' => 'User is not a retailer'], 403);
+        }
+
+        $cart = Cart::where('retailer_id', $retailer->retailer_id)->firstOrFail();
         CartItem::where('cart_id', $cart->cart_id)->delete();
 
         return response()->json(['message' => 'Đã làm trống giỏ hàng']);

@@ -6,6 +6,7 @@ return [
     'allowed_origins' => [
         'http://localhost:5173',
         'https://luanvan-gules.vercel.app',
+        'https://luanvan111.vercel.app',
     ],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
