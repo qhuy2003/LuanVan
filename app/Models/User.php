@@ -30,4 +30,20 @@ class User extends Authenticatable implements JWTSubject
     {
         return []; // Có thể thêm thông tin phụ vào token (nếu cần)
     }
+
+    // 🔗 Relationships
+    public function retailer()
+    {
+        return $this->hasOne(Retailer::class, 'user_id', 'user_id');
+    }
+
+    public function brand()
+    {
+        return $this->hasOne(Brand::class, 'user_id', 'user_id');
+    }
+
+    public function shipper()
+    {
+        return $this->hasOne(Shipper::class, 'user_id', 'user_id');
+    }
 }

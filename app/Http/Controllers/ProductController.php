@@ -73,4 +73,11 @@ public function store(Request $request)
         $product->delete();
         return response()->json(['message' => 'Xóa sản phẩm thành công']);
     }
+
+    // 🛍️ Lấy danh sách sản phẩm cho retailer (chỉ sản phẩm hoạt động)
+    public function retailerProducts()
+    {
+        $products = Product::where('is_active', true)->get();
+        return response()->json($products);
+    }
 }

@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Retailer;
+use App\Models\Brand;
+use App\Models\Shipper;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,17 +28,37 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role
-        ]);
+        DB::beginTransaction();
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => $request->role
+            ]);
 
-        return response()->json([
-            'message' => 'Đăng ký thành công!',
-            'user' => $user
-        ], 201);
+            // Create role-specific record
+            if ($request->role === 'retailer') {
+                Retailer::create(['user_id' => $user->user_id]);
+            } elseif ($request->role === 'brand') {
+                Brand::create(['user_id' => $user->user_id]);
+            } elseif ($request->role === 'shipper') {
+                Shipper::create(['user_id' => $user->user_id]);
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'message' => 'Đăng ký thành công!',
+                'user' => $user
+            ], 201);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'Đăng ký thất bại',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     // 🟡 Đăng nhập

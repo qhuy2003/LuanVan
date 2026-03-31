@@ -35,6 +35,7 @@ Route::get('/brands/{id}', [BrandController::class, 'show']);
 
 //san pham
 Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/retailer', [ProductController::class, 'retailerProducts']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::middleware('auth:api')->group(function () {
     Route::post('/products', [ProductController::class, 'store']);
